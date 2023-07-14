@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <link rel="stylesheet" href="components/loader.css">
+    <script src="components/loader.js"></script>
+    <script src="lib/onsenui/js/onsenui.min.js"></script>
+    <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script>
+        var applicationKey="7a3da2dd51b4d6a424bd5b41daf95b66aa53c38b4dd9607a7c5b831e95287376";
+        var clientKey = "1a17be8c8e4df0639da5ccc151b3ab9ef8c1ce037ce55a2df605da9c857c30ef";
+        var ncmb = new NCMB(applicationKey, clientKey);
+
+        function loadPage(){
+            var DiaryCls = ncmb.DataStore("diaryCls");
+            DiaryCls.fetchAll().then(function(results){
+                var len = results.length;
+            for (var i = 0; i < len; i++){
+                var newCard = document.createElement("ons-card");
+                var newH2 = document.createElement("h2");
+                newH2.innerHTML = results[i].diaryTitle;
+                newCard.appendChild(newH2);
+                var newP = document.createElement("p");
+                newP.innerHTML = results[i].diaryMemo;
+                newCard.appendChild(newP);
+                document.getElementById("listArea").appendChild(newCard);
+            }
+            }).catch(function(error){
+                alert("取得失敗:");
+            });
+        }
+
+    </script>
+</head>
+<body onload="loadPage()">
+    <div id="listArea">
+    </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>DOM総合演習</title>
+</head>
+<body>
+    <h1>DOM天気予報</h1>
+    <img src="" id="weather"><br>
+    <font id="weathercolor" color="black"><p id="weatherp">XXXXXX</p></font>
+    <p>最高気温:<span id="max">32</span>℃ 最低気温:<span id="min">21</span>℃</p>
+    <p>熱中症:<span id="hot"></span></p>
+    <p>風邪注意:<span id="cold"></span></p>
+
+    <script type="text/javascript">
+    var weather=50;
+    var weatherimg=document.getElementById("weather");
+    var wcolor=document.getElementById("weathercolor");
+alert(1);
+    if(weather>=50){
+alert(2);
+        weatherimg.src=img/rain.png;
+        wcolor.color="blue";
+    }else if(weather>=30){
+        weatherimg.src=img/cloud.png;
+        wcolor.color="gray";
+    }else{
+        weatherimg.src=img/sunny.png;
+        wcolor.color="red";
+
+    var weatherP=document.getElementById(weatherp);
+    weatherP.innerHTML="本日の降水確率は"+weather+"％です";
+
+    var maxSpan=document.getElementById("max");
+    var minSpan=document.getElementById("min");
+    var hotSpan=document.getElementById("hot");
+    var coldSpan=document.getElementById("cold");
+
+    if(maxSpan.innerHTML>=35){
+        hotSpan.innerHTML="★★★★★";
+    }else if(maxSpan.innerHTML>=31){
+        hotSpan.innerHTML="★★★★";
+    }else if(maxSpan.innerHTML>=28){
+        hotSpan.innerHTML="★★★";
+    }else if(maxSpan.innerHTML>=25){
+        hotSpan.innerHTML="★★";
+    }else{
+        hotSpan.innerHTML="★";
+    }
+
+    var maxSpan=document.getElementById("max");
+    var minSpan=document.getElementById("min");
+    var hotSpan=document.getElementById("hot");
+    var coldSpan=document.getElementById("cold");
+
+    if(maxSpan.innerHTML-minSpan.innerHTML>=5){
+        coldSpan.innerHTML="★★★★★";
+    }else if(maxSpan.innerHTML-minSpan.innerHTML>=4){
+        coldSpan.innerHTML="★★★★";
+    }else if(maxSpan.innerHTML-minSpan.innerHTML>=3){
+        coldSpan.innerHTML="★★★";
+    }else if(maxSpan.innerHTML-minSpan.innerHTML>=2){
+        coldSpan.innerHTML="★★";
+    }else{
+        coldSpan.innerHTML="★";
+    }
+    </script>
+</body>
+</html>
